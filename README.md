@@ -8,7 +8,7 @@ Maintained by [Myer (also known as myerfire, MyerFire)](https://github.com/myerf
 - [Twitter](https://myer.wtf/twitter)
 - myer#0001 on Discord
 
-This library is a fully featured async wrapper for the [Imperator API](https://docs.imperator). 
+This library is a fully featured async wrapper for the [Imperator API](https://docs.imperator.network/api). 
 
 ## Installation
 
