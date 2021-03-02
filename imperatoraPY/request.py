@@ -45,4 +45,4 @@ async def get(api: str, endpoint: str, **kwargs) -> dict:
             raise exceptions.InvalidAPIKeyError
         if response.status == 429:
             raise exceptions.RatelimitExceededError
-    return await response.json()
+        return await response.json()

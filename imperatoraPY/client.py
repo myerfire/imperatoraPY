@@ -26,13 +26,25 @@ from . import request
 from . import objects
 
 
+get_entities = {
+    "players": objects.Player,
+    "towns": objects.Town,
+}
+
+
 class ImperatorClient:
     def __init__(self, api: str):
         self.api = api
+        self.fetch = Fetch(api)
 
     async def status(self):
         status = await request.get(self.api, "status")
         return objects.Status(status)
+
+    async def get(self, entity, entities, id_):
+        construct = get_entities.get(entities, dict)
+        entities = await request.get(self.api, f"get/{entities}/in/{entity}", id=id_)
+        return [construct(entity) for entity in entities]
 
 
 async def Imperator(api: str) -> ImperatorClient:
@@ -58,7 +70,8 @@ class Fetch:
         :param uuid: The UUID of the player
         :return: Player
         """
-        player = await request.get(self.api, "fetch/player", name=name, uuid=uuid)
+        player = await request.get(self.api, "fetch/player", username=name, uuid=uuid)
+        return objects.Player(player)
 
     async def nation(self, *, name: str = None, id_: int = None):
         """
@@ -68,6 +81,7 @@ class Fetch:
         :return: Nation
         """
         nation = await request.get(self.api, "fetch/nation", name=name, id=id_)
+        return objects.Nation(nation)
 
     async def town(self, *, name: str = None, id_: int = None):
         """
@@ -77,3 +91,4 @@ class Fetch:
         :return: town
         """
         town = await request.get(self.api, "fetch/town", name=name, id=id_)
+        return objects.Town(town)

@@ -27,6 +27,6 @@ __author__ = "myerfire"
 __license__ = "MIT"
 __version__ = "1.1"
 
-from .client import LastFM
+from .client import Imperator
 from .exceptions import *
 from .objects import *
