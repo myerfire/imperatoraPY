@@ -20,7 +20,7 @@ This library is a fully featured async wrapper for the [Imperator API](https://d
 
 - There are relevant docstrings on the functions of the main wrapper class.
 - Object attribute documentation may (?) be worked on but the code
-  in [objects.py](https://github.com/MyerFire/imperatoraPY/blob/master/lastfmpy/objects.py) is easily readable.
+  in [objects.py](https://github.com/MyerFire/imperatoraPY/blob/master/imperatoraPY/objects.py) is easily readable.
 
 ## Quick Start
 
