@@ -32,7 +32,7 @@ class Nation:
         self.longname: str = data.get("longname")
         self.bank: int = data.get("bank")
         self.ideology: str = data.get("ideology")
-        self.color: int = int(data.get(data.get("color")), 16) if data.get("color") else None
+        self.color: int = int(data.get("color", "000000"), 16) if data.get("color") else None
         self.founded: str = data.get("founded")
         self.joinable: bool = bool(data.get("joinable"))
         self.pollexpiry: int = data.get("pollexpiry")
