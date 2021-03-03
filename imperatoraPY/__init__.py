@@ -25,7 +25,7 @@ SOFTWARE.
 __title__ = "imperatoraPY"
 __author__ = "myerfire"
 __license__ = "MIT"
-__version__ = "1.3"
+__version__ = "1.3.1"
 
 from .client import Imperator
 from .exceptions import *

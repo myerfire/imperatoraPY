@@ -30,6 +30,7 @@ class Nation:
         self.id: int = data.get("id")
         self.name: str = data.get("name")
         self.longname: str = data.get("longname")
+        self.formatted: str = f"{self.longname} ({self.name})" if bool(self.longname) else self.name
         self.bank: int = data.get("bank")
         self.ideology: str = data.get("ideology")
         self.color: int = int(data.get("color", "000000"), 16) if data.get("color") else None
