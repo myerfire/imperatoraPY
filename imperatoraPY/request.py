@@ -45,4 +45,7 @@ async def get(api: str, endpoint: str, **kwargs) -> dict:
             raise exceptions.InvalidAPIKeyError
         if response.status == 429:
             raise exceptions.RatelimitExceededError
-        return await response.json()
+        try:
+            return await response.json()
+        except aiohttp.ContentTypeError:
+            raise exceptions.BadRequestError

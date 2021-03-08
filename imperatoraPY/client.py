@@ -25,7 +25,7 @@ SOFTWARE.
 from . import exceptions
 from . import request
 from . import objects
-
+import aiohttp
 
 get_entities = {
     "players": objects.Player,
@@ -83,7 +83,7 @@ class Fetch:
             try:
                 player = await request.get(self.api, "fetch/player", uuid=input_)
             except exceptions.BadRequestError:
-                player = await request.get(self.api, "fetch/player", username=uuid)
+                player = await request.get(self.api, "fetch/player", username=input_)
         else:
             raise exceptions.BadRequestError
         return objects.Player(player)
