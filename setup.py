@@ -29,7 +29,7 @@ with open("README.md") as readme:
 
 setuptools.setup(
     name="imperatoraPY",
-    version="1.4",
+    version="1.4.1",
     author="myerfire",
     author_email="realmyerfire@gmail.com",
     description="An API wrapper for the Imperator API",
