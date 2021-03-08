@@ -38,6 +38,10 @@ class ImperatorClient:
         self.fetch = Fetch(api)
 
     async def status(self):
+        """
+        Gets the status of the Imperator Network, including member information
+        :return: Status
+        """
         status = await request.get(self.api, "status")
         return objects.Status(status)
 
@@ -50,9 +54,9 @@ class ImperatorClient:
 async def Imperator(api: str) -> ImperatorClient:
     """
     Class factory for ImperatorClient Objects
-    TODO: Implement a request to /status that acts as an API key check and error if the request failed
+    Checks if the API key is valid with an example call (to the status endpoint)
     :param api: Imperator API key
-    :return:
+    :return: ImperatorClient
     """
     client = ImperatorClient(api)
     _ = await client.status()  # this acts as a check to see if the API key is invalid and errors if it is
@@ -88,7 +92,7 @@ class Fetch:
         Fetches a town based off a name or ID. If both are provided, the ID is prioritized.
         :param name: The name of the town
         :param id_: The ID of the town
-        :return: town
+        :return: Town
         """
         town = await request.get(self.api, "fetch/town", name=name, id=id_)
         return objects.Town(town)
