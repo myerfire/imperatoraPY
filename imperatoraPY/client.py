@@ -68,22 +68,23 @@ class Fetch:
     def __init__(self, api: str):
         self.api = api
 
-    async def player(self, *, name: str = None, uuid: str = None, input_: str = None):
+    async def player(self, *, name: str = None, uuid: str = None, query: str = None):
         """
         Fetches a player based off a username or UUID. If both are provided, the UUID is prioritized.
         :param name: The name of the player
         :param uuid: The UUID of the player
+        :param query: Wildcard that could be either name or UUID
         :return: Player
         """
         if bool(uuid):
             player = await request.get(self.api, "fetch/player", uuid=uuid)
         elif bool(name):
             player = await request.get(self.api, "fetch/player", username=name)
-        elif bool(input_):
+        elif bool(query):
             try:
-                player = await request.get(self.api, "fetch/player", uuid=input_)
+                player = await request.get(self.api, "fetch/player", uuid=query)
             except exceptions.BadRequestError:
-                player = await request.get(self.api, "fetch/player", username=input_)
+                player = await request.get(self.api, "fetch/player", username=query)
         else:
             raise exceptions.BadRequestError
         return objects.Player(player)
@@ -91,6 +92,7 @@ class Fetch:
     async def nation(self, *, name: str = None, id_: int = None):
         """
         Fetches a nation based off a name or ID. If both are provided, the ID is prioritized.
+        :param id:
         :param name: The name of the nation
         :param id_: The ID of the nation
         :return: Nation
