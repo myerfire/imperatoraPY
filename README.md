@@ -1,5 +1,7 @@
 # imperatoraPY - Imperator API wrapper written in Python
 
+### THIS PROJECT HAS BEEN DISCONTINUED AS THE IMPERATOR NETWORK HAS SHUT DOWN. THE CODE WILL REMAIN AVAILABLE.
+
 [![widget](https://inv.wtf/widget/myerfire)](https://myer.wtf/discord)
 
 Maintained by [Myer (also known as myerfire, MyerFire)](https://github.com/myerfire)
